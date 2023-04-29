@@ -1,0 +1,5 @@
+---
+title: "Workshop"
+format: html
+---
+1. Workshop on Cloud Computing organized by IIT Kharagpur,2019
