@@ -11,7 +11,9 @@ website:
      - about.qmd
      - href: Conference.qmd 
      - href: workshop.qmd
-     - href: blog.qmd # my new navbar page
+     - href: blog.qmd
+     - text: "Blogs"
+       href: notebooks/index.qmd
      - href: gallery.qmd
 
 format:
