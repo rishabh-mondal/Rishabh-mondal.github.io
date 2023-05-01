@@ -13,7 +13,7 @@ website:
      - href: workshop.qmd
      #- href: blog.qmd
      #- text: "Blogs"
-     - href: taylor.qmd
+     - href: blog.qmd
      - href: gallery.qmd
 
 format:

@@ -1,5 +1,21 @@
 ---
 title: "Taylor Series"
+description: "desp"
+author:
+  - name: Rishab Mondal
+    url: https://rishabh-mondal.github.io/
+    #orcid: 0000-0002-5300-3075
+    #affiliation: Master of Environmental Data Science Program @ The Bren School (UCSB) & The National Center for Ecological Analysis & Synthesis
+   # affiliation-url: https://ucsb-meds.github.io/ 
+date: 10-24-2022
+categories: [Quarto, Python] # self-defined categories
+#citation: 
+ # url: https://github.com/rishabh-mondal/Rishabh-mondal.github.io/blob/main/taylor.qmd 
+#image: preview_image.jpg
+draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+---
+---
+title: "Taylor Series"
 format:
   html:
     code-fold: true
