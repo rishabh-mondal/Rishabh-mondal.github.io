@@ -1,5 +1,5 @@
 ---
-title: "My Blog"
+title: "Blogs"
 listing: 
   contents: posts 
   type: grid 
