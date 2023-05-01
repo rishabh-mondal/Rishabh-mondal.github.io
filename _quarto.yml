@@ -11,8 +11,6 @@ website:
      - href: about.qmd
      - href: Conference.qmd 
      - href: workshop.qmd
-     #- href: blog.qmd
-     #- text: "Blogs"
      - href: blog.qmd
      - href: gallery.qmd
 
