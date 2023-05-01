@@ -8,12 +8,12 @@ website:
    background: primary
    left:
      - href: index.qmd
-     - about.qmd
+     - href: about.qmd
      - href: Conference.qmd 
      - href: workshop.qmd
      #- href: blog.qmd
-     - text: "Blogs"
-       href:  taylor.qmd
+     #- text: "Blogs"
+     - href: taylor.qmd
      - href: gallery.qmd
 
 format:
