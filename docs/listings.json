@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/probablity_distribution.html",
       "/posts/index.html"
     ]
   }

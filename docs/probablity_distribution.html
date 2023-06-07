@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Taylor Series</title>
+<title>Probablity Distrubutions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -155,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Taylor Series</h1>
+<h1 class="title">Probablity Distrubutions</h1>
 </div>
 
 
@@ -170,133 +170,158 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><span class="math display">\[\begin{equation}
-f(x) = \sum_{n=0}^{\infty}\frac{f^{(n)}(a)}{n!}(x-a)^{n}
+<p><strong>Bernoulli Distribution</strong></p>
+<p>Types of Distribution : Discrete Distribution</p>
+<p>In Bernoulli Distribution the random variable takes the value <span class="math inline">\(1\)</span> with probability <span class="math inline">\(p\)</span> and the value <span class="math inline">\(0\)</span> with probability <span class="math inline">\(1-p\)</span>, where <span class="math inline">\(0 ≤ p ≤ 1\)</span>.</p>
+<p>The probability mass function (PMF): <span class="math display">\[\begin{equation}
+P(X = x) = p^x \cdot (1-p)^{1-x} \tag{1}
 \end{equation}\]</span></p>
-<p>Let <span class="math inline">\(f(x)\)</span> be a function that is <span class="math inline">\(n+1\)</span> times differentiable on an interval <span class="math inline">\(I\)</span> containing <span class="math inline">\(a\)</span> and let <span class="math inline">\(P_n(x)\)</span> be the <span class="math inline">\(n\)</span>th degree Taylor polynomial for <span class="math inline">\(f(x)\)</span> about <span class="math inline">\(a\)</span>. Then, there exists a number <span class="math inline">\(c\)</span> between <span class="math inline">\(a\)</span> and <span class="math inline">\(x\)</span> such that: <span class="math display">\[\begin{equation}
-f(x)=P_n(x)+R_n(x),
-\end{equation}\]</span> where the remainder <span class="math inline">\(R_n(x)\)</span> is given by: <span class="math display">\[\begin{equation}
-R_n(x)=\frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}.
-\end{equation}\]</span></p>
-<section id="define-the-function-to-be-approximated" class="level1">
-<h1>Define the function to be approximated</h1>
+<p>Where <span class="math inline">\((X)\)</span> is the random variable, <span class="math inline">\((x)\)</span> can be either 0 or <span class="math inline">\(1\)</span>, and <span class="math inline">\((p)\)</span> is the probability of success.</p>
 <div class="cell" data-execution_count="1">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the sine function to be approximated</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> torch.sin(x)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.linspace(<span class="op">-</span><span class="fl">3.14</span>, <span class="fl">3.14</span>, <span class="dv">100</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> f(x)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'x'</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'y'</span>)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Sine Function'</span>)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="fl">0.6</span> <span class="co">#success=0.6 failure=0.4</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> np.random.choice([<span class="dv">0</span>, <span class="dv">1</span>], p<span class="op">=</span>[<span class="dv">1</span> <span class="op">-</span> p, p])</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>prob <span class="op">=</span> (p <span class="op">**</span> sample) <span class="op">*</span> ((<span class="dv">1</span> <span class="op">-</span> p) <span class="op">**</span> (<span class="dv">1</span> <span class="op">-</span> sample))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Sample:"</span>, sample)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Probability:"</span>, prob)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#Using PyTorch</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.distributions <span class="im">import</span> Bernoulli</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>dist<span class="op">=</span>Bernoulli(torch.tensor([p]))</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>sample<span class="op">=</span>dist.sample()</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Sample:"</span>, sample)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Probability:"</span>, dist)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Set of Probablty of success</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>probs <span class="op">=</span> torch.tensor([<span class="fl">0.7</span>, <span class="fl">0.4</span>, <span class="fl">0.9</span>])</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>bernoulli_dist <span class="op">=</span> Bernoulli(probs<span class="op">=</span>probs,logits<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>samples <span class="op">=</span> bernoulli_dist.sample()</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"probablity distributions:"</span>, bernoulli_dist)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Samples:"</span>, samples)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Log-odds of success</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>logits <span class="op">=</span> torch.tensor([<span class="fl">0.847</span>])</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>dist <span class="op">=</span> Bernoulli(probs<span class="op">=</span><span class="va">None</span>,logits<span class="op">=</span>logits)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> dist.sample()</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"log odd prob :"</span>, dist)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Sample:"</span>, sample.item())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display">
-<p><img src="taylor_files/figure-html/cell-2-output-1.png" width="609" height="449"></p>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sample: 0
+Probability: 0.4
+Sample: tensor([0.])
+Probability: Bernoulli(probs: tensor([0.6000]))
+probablity distributions: Bernoulli(probs: torch.Size([3]))
+Samples: tensor([0., 0., 1.])
+log odd prob : Bernoulli(probs: tensor([0.6999]), logits: tensor([0.8470]))
+Sample: 0.0</code></pre>
 </div>
 </div>
-</section>
-<section id="first-order-taylor-approximation-for-fx-at-x-0" class="level1">
-<h1>First order Taylor approximation for f(x) at x = 0</h1>
+<p><strong>Log probability of Bernoulli distribution</strong></p>
+<p>To obtain the log probability, we take the natural logarithm of the PMF: <span class="math display">\[\begin{equation}
+\log P(X=x) = \log(p^x \cdot (1-p)^{1-x}) \tag{2}
+\end{equation}\]</span></p>
+<p><span class="math display">\[\begin{equation}
+\log P(X=x) = x \cdot \log(p) + (1-x) \cdot \log(1-p) \tag{3}
+\end{equation}\]</span></p>
 <div class="cell" data-execution_count="2">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.tensor([<span class="fl">0.</span>], requires_grad<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> f(x)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>approx <span class="op">=</span> y <span class="op">+</span> torch.autograd.grad(y, x, create_graph<span class="op">=</span><span class="va">True</span>)[<span class="dv">0</span>] <span class="op">*</span> x</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>x_vals <span class="op">=</span> torch.linspace(<span class="op">-</span>np.pi, np.pi, <span class="dv">100</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>y_vals <span class="op">=</span> f(x_vals)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>approx_vals <span class="op">=</span> (approx.detach() <span class="op">+</span> torch.autograd.grad(approx, x, create_graph<span class="op">=</span><span class="va">True</span>)[<span class="dv">0</span>] <span class="op">*</span> x_vals).detach()</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>plt.plot(x_vals.numpy(), y_vals.numpy(), label<span class="op">=</span><span class="st">'sin(x)'</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>plt.plot(x_vals.numpy(), approx_vals.numpy(), label<span class="op">=</span><span class="st">'approx'</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sample<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>prob<span class="op">=</span><span class="fl">0.6</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>log_probability <span class="op">=</span> sample <span class="op">*</span> math.log(p) <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> sample) <span class="op">*</span> math.log(<span class="dv">1</span> <span class="op">-</span> p)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"sample:"</span>, sample)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Log Probability:"</span>, log_probability)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#using PyTorch</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> torch.tensor([<span class="dv">1</span>])</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> torch.tensor([<span class="fl">0.6</span>])</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>dist <span class="op">=</span> Bernoulli(probs<span class="op">=</span>p,logits<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>sample<span class="op">=</span>dist.sample()</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>log_prob<span class="op">=</span>dist.log_prob(sample)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Sample:"</span>, sample)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Log Probability:"</span>, log_prob)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display">
-<p><img src="taylor_files/figure-html/cell-3-output-1.png" width="569" height="411"></p>
+<div class="cell-output cell-output-stdout">
+<pre><code>sample: 1
+Log Probability: -0.5108256237659907
+Sample: tensor([0.])
+Log Probability: tensor([-0.9163])</code></pre>
 </div>
 </div>
-</section>
-<section id="find-the-nth-order-taylor-approximation-for-fx-at-x-0" class="level1">
-<h1>Find the nth order Taylor approximation for f(x) at x = 0</h1>
+<p><strong>Maximum Likelihood Estimations(MLE) for Bernoulli Distribution</strong></p>
+<p>The MLE is a method used to estimate the parameters of a probability distribution based on observed data.</p>
+<p><strong><em>Derivation of MLE for Bernoulli Distribution</em></strong></p>
+<p>We have a dataset with n binary samples:<span class="math inline">\(x1\)</span> , <span class="math inline">\(x2\)</span> , ..,<span class="math inline">\(xn\)</span>, where each <span class="math inline">\(xi\)</span> is 0 or 1.</p>
+<p>The likelihood function for the Bernoulli distribution is given by: <span class="math display">\[\begin{equation}
+L(p) = \prod_{i=1}^{n} p^{x_i} \cdot (1-p)^{1-x_i}
+\end{equation}\]</span></p>
+<p>Taking the log-likelihood function: <span class="math display">\[\begin{equation}
+\log L(p) = \sum_{i=1}^{n} x_i \log p + (1-x_i) \log (1-p)
+\end{equation}\]</span></p>
+<p>Differentiating the log-likelihood function and setting it equal to zero: <span class="math display">\[\begin{equation}
+\frac{{\partial}}{{\partial p}} \log L(p) = \sum_{i=1}^{n} \left(\frac{{x_i}}{{p}} - \frac{{1-x_i}}{{1-p}}\right) = 0
+\end{equation}\]</span></p>
+<p>Simplifying the equation: <span class="math display">\[\begin{equation}
+\frac{{\sum_{i=1}^{n} x_i - np}}{{p(1-p)}} = 0
+\end{equation}\]</span></p>
+<p>Solving for <span class="math inline">\(p\)</span>: <span class="math display">\[\begin{equation}
+np = \sum_{i=1}^{n} x_i
+\end{equation}\]</span></p>
 <div class="cell" data-execution_count="3">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fact(n):</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> math.factorial(n)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> nth_deriv(f, a, n):</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(a, (<span class="bu">float</span>, <span class="bu">int</span>)):</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> torch.tensor([a], dtype<span class="op">=</span>torch.<span class="bu">float</span>, requires_grad<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        a <span class="op">=</span> a.clone().detach().requires_grad_(<span class="va">True</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> f(a)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        y <span class="op">=</span> torch.autograd.grad(y, a, create_graph<span class="op">=</span><span class="va">True</span>)[<span class="dv">0</span>]</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># nth degree Taylor polynomial of f(x) around x=a</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> taylor(f, x, n):</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> torch.zeros_like(x)</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n<span class="op">+</span><span class="dv">1</span>):</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        result <span class="op">+=</span> nth_deriv(f, <span class="dv">0</span>, i) <span class="op">/</span> torch.tensor(math.factorial(i), dtype<span class="op">=</span>torch.float32) <span class="op">*</span> (x<span class="op">**</span>i)</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>x_vals <span class="op">=</span> torch.linspace(<span class="op">-</span>math.pi, math.pi, <span class="dv">200</span>)</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>plt.plot(x_vals.numpy(), f(x_vals).numpy(), label<span class="op">=</span><span class="st">'f(x)'</span>, lw<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>plt.plot(x_vals.numpy(), taylor(f, x_vals, <span class="dv">1</span>).detach().numpy(), label<span class="op">=</span><span class="st">'Taylor approximation, n=1'</span>)</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>plt.plot(x_vals.numpy(), taylor(f, x_vals, <span class="dv">3</span>).detach().numpy(), label<span class="op">=</span><span class="st">'Taylor approximation, n=3'</span>)</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>plt.plot(x_vals.numpy(), taylor(f, x_vals, <span class="dv">5</span>).detach().numpy(), label<span class="op">=</span><span class="st">'Taylor approximation, n=5'</span>)</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>size <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> dist.sample(torch.Size([size]))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>num_suc<span class="op">=</span>dataset.<span class="bu">float</span>().<span class="bu">sum</span>()</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>p_estimate<span class="op">=</span>num_suc.<span class="bu">float</span>()<span class="op">/</span>dataset.size(<span class="dv">0</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"MLE Estimate:"</span>, p_estimate.item())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display">
-<p><img src="taylor_files/figure-html/cell-4-output-1.png" width="569" height="411"></p>
+<div class="cell-output cell-output-stdout">
+<pre><code>MLE Estimate: 0.550000011920929</code></pre>
 </div>
 </div>
-</section>
-<section id="plot-of-the-function-gx-x2-and-its-taylor-approximations-up-to-degree-1-and-degree-2-centered-at-x0." class="level1">
-<h1>Plot of the function g(x) = x^2 and its Taylor approximations up to degree 1 and degree 2 centered at x=0.</h1>
+<p>Loss v/s iteration curve</p>
 <div class="cell" data-execution_count="4">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x_vals <span class="op">=</span> torch.linspace(<span class="op">-</span><span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">100</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> g(x):</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> taylor(f, x, n):</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> x.unsqueeze(<span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> f(x)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, n<span class="op">+</span><span class="dv">1</span>):</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        y <span class="op">+=</span> (x <span class="op">-</span> x[<span class="dv">0</span>])<span class="op">**</span>i <span class="op">/</span> torch.tensor([math.factorial(i)]).<span class="bu">float</span>() <span class="op">*</span> f(x[<span class="dv">0</span>] <span class="op">+</span> <span class="fl">0.0</span>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>plt.plot(x_vals.numpy(), g(x_vals).numpy(), label<span class="op">=</span><span class="st">'g(x)'</span>, lw<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>plt.plot(x_vals.numpy(), taylor(g, x_vals, <span class="dv">1</span>).detach().numpy(), label<span class="op">=</span><span class="st">'Taylor approximation, n=1'</span>)</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>plt.plot(x_vals.numpy(), taylor(g, x_vals, <span class="dv">3</span>).detach().numpy(), label<span class="op">=</span><span class="st">'Taylor approximation, n=3'</span>)</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>plt.plot(x_vals.numpy(), taylor(g, x_vals, <span class="dv">5</span>).detach().numpy(), label<span class="op">=</span><span class="st">'Taylor approximation, n=5'</span>)</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.optim <span class="im">import</span> Adam</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>dataset_sizes <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">500</span>,<span class="dv">1000</span>,<span class="dv">10000</span>]</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> negative_log_likelihood(p, dataset):</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>(dataset <span class="op">*</span> torch.log(p) <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> dataset) <span class="op">*</span> torch.log(<span class="dv">1</span> <span class="op">-</span> p)).mean()</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> size <span class="kw">in</span> dataset_sizes:</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    dataset <span class="op">=</span> torch.randint(low<span class="op">=</span><span class="dv">0</span>, high<span class="op">=</span><span class="dv">2</span>, size<span class="op">=</span>(size,))</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> torch.tensor(<span class="fl">0.5</span>, requires_grad<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    optimizer <span class="op">=</span> Adam([p], lr<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    loss_values <span class="op">=</span> []</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    iteration_values <span class="op">=</span> []</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>):</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        optimizer.zero_grad()</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span> negative_log_likelihood(p, dataset)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        loss.backward()</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        optimizer.step()</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        loss_values.append(loss.item())</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        iteration_values.append(i<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    plt.plot(iteration_values, loss_values, label<span class="op">=</span><span class="ss">f'Dataset Size: </span><span class="sc">{</span>size<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Iteration'</span>)</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Loss'</span>)</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Loss vs. Iteration for Varying Dataset Sizes'</span>)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="taylor_files/figure-html/cell-5-output-1.png" width="583" height="411"></p>
+<p><img src="probablity_distribution_files/figure-html/cell-5-output-1.png" width="606" height="449"></p>
 </div>
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
