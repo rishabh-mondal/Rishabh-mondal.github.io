@@ -210,14 +210,14 @@ P(X = x) = p^x \cdot (1-p)^{1-x} \tag{1}
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Sample:"</span>, sample.item())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Sample: 1
-Probability: 0.6
-Sample: tensor([0.])
+<pre><code>Sample: 0
+Probability: 0.4
+Sample: tensor([1.])
 Probability: Bernoulli(probs: tensor([0.6000]))
 probablity distributions: Bernoulli(probs: torch.Size([3]))
-Samples: tensor([1., 0., 1.])
+Samples: tensor([0., 0., 1.])
 log odd prob : Bernoulli(probs: tensor([0.6999]), logits: tensor([0.8470]))
-Sample: 1.0</code></pre>
+Sample: 0.0</code></pre>
 </div>
 </div>
 <p><strong>Log probability of Bernoulli distribution</strong></p>
@@ -249,8 +249,8 @@ Sample: 1.0</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>sample: 1
 Log Probability: -0.5108256237659907
-Sample: tensor([1.])
-Log Probability: tensor([-0.5108])</code></pre>
+Sample: tensor([0.])
+Log Probability: tensor([-0.9163])</code></pre>
 </div>
 </div>
 <p><strong>Maximum Likelihood Estimations(MLE) for Bernoulli Distribution</strong></p>
@@ -282,7 +282,7 @@ np = \sum_{i=1}^{n} x_i
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"MLE Estimate:"</span>, p_estimate.item())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>MLE Estimate: 0.7099999785423279</code></pre>
+<pre><code>MLE Estimate: 0.5899999737739563</code></pre>
 </div>
 </div>
 <p>Loss v/s iteration curve</p>
@@ -317,7 +317,7 @@ np = \sum_{i=1}^{n} x_i
 <span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="probablity_distribution_files/figure-html/cell-5-output-1.png" width="597" height="449"></p>
+<p><img src="probablity_distribution_files/figure-html/cell-5-output-1.png" width="606" height="449"></p>
 </div>
 </div>
 
