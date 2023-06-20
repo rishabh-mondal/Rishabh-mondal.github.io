@@ -9,7 +9,7 @@
 <meta name="author" content="Rishabh Mondal">
 <meta name="dcterms.date" content="2024-06-23">
 
-<title>Bernoulli distribution</title>
+<title>Probablity Distribution</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -157,7 +157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Bernoulli distribution</h1>
+<h1 class="title">Probablity Distribution</h1>
 </div>
 
 
@@ -184,9 +184,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Bernoulli distribution</p>
+<section id="introduction" class="level5">
+<h5 class="anchored" data-anchor-id="introduction">Introduction</h5>
 <p>Bernoulli distribution is a discret univariate probability distribution. A Bernoulli trial or experiment results in binary outcomes: success or failure <span class="math inline">\((0 or 1)\)</span>. The trial’s success is denoted as $ p (x=1)$, and failure is expressed as <span class="math inline">\(1-p ( x=0)\)</span>.</p>
+</section>
 <section id="key-takeaways" class="level3">
 <h3 class="anchored" data-anchor-id="key-takeaways">Key Takeaways</h3>
 <section id="the-bernoulli-distribution-is-a-discrete-probability-indicator." class="level5">
@@ -210,7 +212,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 P(X = x) = p^x \cdot (1-p)^{1-x} \tag{1}
 \end{equation}\]</span> $ where <span class="math inline">\((X)\)</span> is the random variable, <span class="math inline">\((x)\)</span> can be either 0 or 1, and <span class="math inline">\((p)\)</span> is the probability of success.</p>
 <p>Some imports</p>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.distributions <span class="im">import</span> Bernoulli</span>
@@ -219,7 +221,7 @@ P(X = x) = p^x \cdot (1-p)^{1-x} \tag{1}
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Implementation of PMF</p>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="fl">0.6</span> <span class="co">#success=0.6 failure=0.4</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> np.random.choice([<span class="dv">0</span>, <span class="dv">1</span>], p<span class="op">=</span>[<span class="dv">1</span> <span class="op">-</span> p, p])</span>
@@ -249,12 +251,12 @@ P(X = x) = p^x \cdot (1-p)^{1-x} \tag{1}
 <span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"log odd prob :"</span>, dist)</span>
 <span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Sample:"</span>, sample.item())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Sample: 1
-Probability: 0.6
-Sample: tensor([0.])
+<pre><code>Sample: 0
+Probability: 0.4
+Sample: tensor([1.])
 Probability: Bernoulli(probs: tensor([0.6000]))
 probablity distributions: Bernoulli(probs: torch.Size([3]))
-Samples: tensor([0., 1., 0.])
+Samples: tensor([1., 0., 1.])
 log odd prob : Bernoulli(probs: tensor([0.6999]), logits: tensor([0.8470]))
 Sample: 1.0</code></pre>
 </div>
@@ -265,7 +267,7 @@ Sample: 1.0</code></pre>
 \end{equation}\]</span> $ $ <span class="math display">\[\begin{equation}
 \log P(X=x) = x \cdot \log(p) + (1-x) \cdot \log(1-p)
 \end{equation}\]</span> $</p>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sample<span class="op">=</span><span class="dv">1</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>prob<span class="op">=</span><span class="fl">0.6</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>log_probability <span class="op">=</span> sample <span class="op">*</span> math.log(p) <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> sample) <span class="op">*</span> math.log(<span class="dv">1</span> <span class="op">-</span> p)</span>
@@ -305,19 +307,19 @@ Log Probability: tensor([-0.5108])</code></pre>
 <p>$ p = _{i=1}^{n} x_i $</p>
 <p>Therefore, the MLE for the parameter p in the Bernoulli distribution is the sample mean of the observed values.</p>
 <p>It is important to note that this MLE is consistent, unbiased, and efficient for estimating the parameter p in the Bernoulli distribution.</p>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>size <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> dist.sample(torch.Size([size]))</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>num_suc<span class="op">=</span>dataset.<span class="bu">float</span>().<span class="bu">sum</span>()</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>p_estimate<span class="op">=</span>num_suc.<span class="bu">float</span>()<span class="op">/</span>dataset.size(<span class="dv">0</span>)</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"MLE Estimate:"</span>, p_estimate.item())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>MLE Estimate: 0.6100000143051147</code></pre>
+<pre><code>MLE Estimate: 0.6299999952316284</code></pre>
 </div>
 </div>
 <p>Performing Maximum Likelihood Estimation (MLE) for the Bernoulli distribution with varying dataset sizes. It computes the negative log-likelihood loss for different dataset sizes and optimizes the parameter ‘p’ to minimize the loss using the Adam optimizer.</p>
 <p>The resulting loss values are then plotted against the iterations to visualize the convergence of the MLE estimation.</p>
-<div class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>dataset_sizes <span class="op">=</span> [<span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">200</span>, <span class="dv">500</span>,<span class="dv">1000</span>,<span class="dv">10000</span>]</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> negative_log_likelihood(p, dataset):</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span>(dataset <span class="op">*</span> torch.log(p) <span class="op">+</span> (<span class="dv">1</span> <span class="op">-</span> dataset) <span class="op">*</span> torch.log(<span class="dv">1</span> <span class="op">-</span> p)).mean()</span>
@@ -355,7 +357,6 @@ Log Probability: tensor([-0.5108])</code></pre>
 </ol>
 
 
-</section>
 </section>
 </section>
 
