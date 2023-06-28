@@ -9,7 +9,7 @@
 <meta name="author" content="Rishabh Mondal">
 <meta name="dcterms.date" content="2024-06-23">
 
-<title>Probablity Distribution</title>
+<title>Probailty Distribtion</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -157,7 +157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Probablity Distribution</h1>
+<h1 class="title">Probailty Distribtion</h1>
 </div>
 
 
@@ -184,6 +184,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<section id="probablity-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="probablity-distribution">Probablity Distribution</h2>
 <p>Bernoulli distribution</p>
 <section id="introduction" class="level5">
 <h5 class="anchored" data-anchor-id="introduction">Introduction</h5>
@@ -208,9 +210,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="the-probability-mass-function-pmf" class="level5">
 <h5 class="anchored" data-anchor-id="the-probability-mass-function-pmf">6.The probability mass function (PMF):</h5>
-<p>$ <span class="math display">\[\begin{equation}
+<p><span class="math display">\[\begin{equation}
 P(X = x) = p^x \cdot (1-p)^{1-x} \tag{1}
-\end{equation}\]</span> $ where <span class="math inline">\((X)\)</span> is the random variable, <span class="math inline">\((x)\)</span> can be either 0 or 1, and <span class="math inline">\((p)\)</span> is the probability of success.</p>
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\((X)\)</span> is the random variable, <span class="math inline">\((x)\)</span> can be either 0 or 1, and <span class="math inline">\((p)\)</span> is the probability of success.</p>
 <p>Some imports</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -262,11 +265,13 @@ Sample: 1.0</code></pre>
 </div>
 </div>
 <p>Log probability of Bernoulli distribution</p>
-<p>To obtain the log probability, we take the natural logarithm of the PMF: $ <span class="math display">\[\begin{equation}
+<p>To obtain the log probability, we take the natural logarithm of the PMF:</p>
+<p><span class="math display">\[\begin{equation}
 \log P(X=x) = \log(p^x \cdot (1-p)^{1-x})
-\end{equation}\]</span> $ $ <span class="math display">\[\begin{equation}
+\end{equation}\]</span></p>
+<p><span class="math display">\[\begin{equation}
 \log P(X=x) = x \cdot \log(p) + (1-x) \cdot \log(1-p)
-\end{equation}\]</span> $</p>
+\end{equation}\]</span></p>
 <div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sample<span class="op">=</span><span class="dv">1</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>prob<span class="op">=</span><span class="fl">0.6</span></span>
@@ -292,19 +297,31 @@ Log Probability: tensor([-0.5108])</code></pre>
 <p>Maximum Likelihood Estimations(MLE) for Bernoulli Distribution</p>
 <p>To derive the Maximum Likelihood Estimation (MLE) for the Bernoulli distribution, let’s assume we have a random sample of independent and identically distributed (i.i.d.) observations from a Bernoulli distribution with parameter p.&nbsp;Each observation can take a value of either 0 or 1.</p>
 <p>The likelihood function for the Bernoulli distribution is given by:</p>
-<p>$ L(p) = _{i=1}^{n} p^{x_i} (1-p)^{1-x_i} $</p>
+<p><span class="math display">\[ L(p) = \prod_{i=1}^{n} p^{x_i} \cdot (1-p)^{1-x_i} \]</span></p>
 <p>where (x_i) is the i-th observation in the sample and n is the total number of observations.</p>
 <p>To find the MLE for p, we want to find the value of p that maximizes the likelihood function L(p). It is often easier to work with the log-likelihood function, which is the natural logarithm of the likelihood function:</p>
-<p>$ L(p) = _{i=1}^{n} x_i (p) + (1-x_i) (1-p) $</p>
+<p><span class="math display">\[
+\log L(p) = \sum_{i=1}^{n} x_i \cdot \log(p) + (1-x_i) \cdot \log(1-p)
+\]</span></p>
 <p>To find the MLE, we differentiate the log-likelihood function with respect to p and set it equal to zero:</p>
-<p>$ (L(p)) = <em>{i=1}^{n} x_i - </em>{i=1}^{n} (1-x_i) = 0 $</p>
+<p><span class="math display">\[
+\frac{d}{dp}(\log L(p)) = \frac{1}{p}\sum_{i=1}^{n} x_i - \frac{1}{1-p}\sum_{i=1}^{n} (1-x_i) = 0
+\]</span></p>
 <p>Simplifying the equation:</p>
-<p>$ <em>{i=1}^{n} x_i - + </em>{i=1}^{n} x_i = 0 $</p>
+<p><span class="math display">\[
+\frac{1}{p}\sum_{i=1}^{n} x_i - \frac{n}{1-p} + \frac{1}{1-p}\sum_{i=1}^{n} x_i = 0
+\]</span></p>
 <p>Multiplying through by p(1-p):</p>
-<p>$ (1-p)<em>{i=1}^{n} x_i - np + p</em>{i=1}^{n} x_i = 0 $</p>
+<p><span class="math display">\[
+(1-p)\sum_{i=1}^{n} x_i - np + p\sum_{i=1}^{n} x_i = 0
+\]</span></p>
 <p>Rearranging the terms:</p>
-<p>$ _{i=1}^{n} x_i - np = 0 $ Finally, solving for p:</p>
-<p>$ p = _{i=1}^{n} x_i $</p>
+<p><span class="math display">\[
+\sum_{i=1}^{n} x_i - np = 0
+\]</span> Finally, solving for p:</p>
+<p><span class="math display">\[
+p = \frac{1}{n}\sum_{i=1}^{n} x_i
+\]</span></p>
 <p>Therefore, the MLE for the parameter p in the Bernoulli distribution is the sample mean of the observed values.</p>
 <p>It is important to note that this MLE is consistent, unbiased, and efficient for estimating the parameter p in the Bernoulli distribution.</p>
 <div class="cell" data-execution_count="4">
@@ -357,6 +374,7 @@ Log Probability: tensor([-0.5108])</code></pre>
 </ol>
 
 
+</section>
 </section>
 </section>
 
