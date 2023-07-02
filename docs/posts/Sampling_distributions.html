@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Rishabh Mondal">
+<meta name="dcterms.date" content="2023-02-07">
 
-<title>Uniform to Normal sampling</title>
+<title>Different Distribution Samples</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -155,14 +157,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Uniform to Normal sampling</h1>
+<h1 class="title">Different Distribution Samples</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Rishabh Mondal </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 7, 2023</p>
+    </div>
+  </div>
   
     
   </div>
@@ -170,7 +184,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><strong>Implementing a pseudo-random number generator (PRNG)</strong> - An algorithm that generates a sequence of numbers that exhibit properties of randomness</p>
+<p><strong>Bernoulli, Categorical, Normal using Uniform sampling</strong></p>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Important libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.distributions <span class="im">as</span> dist</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hamiltorch</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tueplots <span class="im">import</span> bundles</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(bundles.beamer_moml())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pre-defined values</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>n_samples<span class="op">=</span><span class="dv">10000</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>seed<span class="op">=</span><span class="dv">42</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="fl">0.4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Implementing a pseudo-random number generator (PRNG)</strong> - Generates a sequence of numbers that exhibit properties of randomness</p>
 <p><strong>Linear Congruential Generator (LCG)</strong> is a simple PRNG algorithm - The LCG algorithm is defined by the recurrence relation:</p>
 <p><span class="math inline">\(X_{n+1} = (a \cdot X_n + c) \mod m\)</span></p>
 <ul>
@@ -180,46 +211,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><span class="math inline">\(c\)</span> is the increment, which shifts the generated sequence.</li>
 <li><span class="math inline">\(m\)</span> is the modulus, which determines the range of values that the generated numbers can take.</li>
 </ul>
-<div class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.distributions <span class="im">as</span> dist</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> hamiltorch</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tueplots <span class="im">import</span> bundles</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(bundles.beamer_moml())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>n_samples<span class="op">=</span><span class="dv">10000</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>seed<span class="op">=</span><span class="dv">42</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>p<span class="op">=</span><span class="fl">0.4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lcg(seed, n_samples):</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Generates a sequence of pseudo-random numbers using the Linear Congruential Generator (LCG) algorithm.</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">        seed (int): The seed value for the LCG algorithm.</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">        n_samples (int): The number of random numbers to generate.</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">        list: A list of pseudo-random numbers normalized to the range [0, 1].</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> <span class="dv">1103515245</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> <span class="dv">12345</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> <span class="dv">2</span> <span class="op">**</span> <span class="dv">31</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    random_numbers <span class="op">=</span> []</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n_samples):</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        seed <span class="op">=</span> (a <span class="op">*</span> seed <span class="op">+</span> c) <span class="op">%</span> m</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        random_number <span class="op">=</span> seed <span class="op">/</span> m  <span class="co"># Normalize to range [0, 1]</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        random_numbers.append(random_number)</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> random_numbers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function for Linear Congruential Generator</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lcg(seed, n_samples):</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Generates a sequence of pseudo-random numbers using the Linear Congruential Generator (LCG) algorithm.</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">        seed (int): The seed value for the LCG algorithm.</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">        n_samples (int): The number of random numbers to generate.</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">        list: A list of pseudo-random numbers normalized to the range [0, 1].</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> <span class="dv">1103515245</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> <span class="dv">12345</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> <span class="dv">2</span> <span class="op">**</span> <span class="dv">31</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    random_numbers <span class="op">=</span> []</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(n_samples):</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        seed <span class="op">=</span> (a <span class="op">*</span> seed <span class="op">+</span> c) <span class="op">%</span> m</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        random_number <span class="op">=</span> seed <span class="op">/</span> m  <span class="co"># Normalize to range [0, 1]</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        random_numbers.append(random_number)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> random_numbers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Plot histogram</p>
-<div class="cell" data-execution_count="32">
+<div class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage:</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>random_numbers <span class="op">=</span> lcg(seed, n_samples )</span>
@@ -233,6 +251,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="Sampling_distributions_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
 </div>
 </div>
+<p>In a <strong><em>uniform distribution</em></strong>, all values have an equal chance of occurring. The graph of this distribution shows bars or lines of equal height for each outcome, creating a <strong><em>rectangular shape</em></strong>. For example, when drawing from a standard deck, the probability of selecting a heart or a spade is 1/4 or 25%.</p>
 <p><strong>Using PyTorch</strong></p>
 <div class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
@@ -252,7 +271,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Convert <strong>Unifom Sampling</strong> to <strong>Bernoulli Sampling</strong></p>
 <p>we can use the probablity <span class="math inline">\((p)\)</span> of outcome 1 and <span class="math inline">\((1-p)\)</span> of outcome 0</p>
-<div class="cell" data-execution_count="35">
+<div class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> uniform_to_bernoulli(seed, n_samples, p):</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
@@ -276,7 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="34">
+<div class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>random_numbers <span class="op">=</span> uniform_to_bernoulli(seed, n_samples, p)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the occurrences of each category</span></span>
@@ -293,8 +312,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="Sampling_distributions_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
 </div>
 </div>
+<p><strong><em>Uniform Sampling</em></strong> Each element has an equal probability. Graphically, a <strong><em>rectangular distribution</em></strong> is formed with uniform bars or lines in case of <strong><em>Bernoulli Sampling</em></strong> Two outcomes, success and failure, with associated probabilities (p and (1-p)). Graphically, <strong><em>two bars or lines</em></strong> represent the distribution, one taller than the other.</p>
 <p><strong><em>Function for uniform to Categorical</em></strong></p>
-<div class="cell" data-execution_count="15">
+<div class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> uniform_to_categorical(seed, n_samples, num_categories):</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Converts pseudo-random numbers from a uniform distribution to a categorical distribution.</span></span>
@@ -318,7 +338,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong><em>Plot of Uniform to Categorical distribution</em></strong></p>
-<div class="cell" data-execution_count="38">
+<div class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>random_numbers <span class="op">=</span> uniform_to_categorical(seed, n_samples, <span class="dv">5</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the occurrences of each category</span></span>
@@ -334,15 +354,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Categorical Distribution'</span>)</span>
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>tensor([1953, 1975, 1963, 2038, 2071])
-tensor([0.1953, 0.1975, 0.1963, 0.2038, 0.2071])</code></pre>
+<pre><code>tensor([1990, 1971, 1985, 2005, 2049])
+tensor([0.1990, 0.1971, 0.1985, 0.2005, 0.2049])</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="Sampling_distributions_files/figure-html/cell-10-output-2.png" class="img-fluid"></p>
 </div>
 </div>
+<p><strong><em>Categorical Distribution</em></strong> multiple outcomes with <strong><em>different probabilities</em></strong>. Example: A fruit survey with apple (P = 0.4), banana (P = 0.3), and orange (P = 0.3). Graphically, bars represent each fruit choice.</p>
+<section id="uniform-to-normal-sampling" class="level3">
+<h3 class="anchored" data-anchor-id="uniform-to-normal-sampling">Uniform to Normal sampling</h3>
 <p><strong><em>Box Muller Method</em></strong></p>
-<div class="cell" data-execution_count="17">
+<div class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> uniform_to_normal_boxmuller(n_samples):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Generates a sequence of pseudo-random numbers from a standard normal distribution using the Box-Muller method.</span></span>
@@ -373,7 +396,7 @@ tensor([0.1953, 0.1975, 0.1963, 0.2038, 0.2071])</code></pre>
 <span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> torch.stack(random_numbers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="39">
+<div class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>random_numbers <span class="op">=</span> uniform_to_normal_boxmuller(<span class="dv">10000</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the histogram of random numbers</span></span>
@@ -386,8 +409,10 @@ tensor([0.1953, 0.1975, 0.1963, 0.2038, 0.2071])</code></pre>
 <p><img src="Sampling_distributions_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
 </div>
 </div>
+<p>In <strong><em>Normal Distribution</em></strong> Values are <strong><em>symmetrically distributed</em></strong> around a central mean. For example, heights in a population follow a <strong><em>bell-shaped</em></strong> curve, with the most common values near the mean and fewer occurrences as we move away from it. Graphically, it is represented by a bell-shaped curve.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
