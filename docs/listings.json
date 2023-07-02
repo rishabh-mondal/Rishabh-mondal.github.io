@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/spiking_nn.html",
       "/posts/thuplots.html",
       "/posts/different_losses.html",
       "/posts/Probablity_distibution.html",
