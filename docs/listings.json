@@ -3,6 +3,7 @@
     "listing": "/blog.html",
     "items": [
       "/posts/thuplots.html",
+      "/posts/different_losses.html",
       "/posts/Probablity_distibution.html",
       "/posts/Sampling_distributions.html",
       "/posts/index.html"
