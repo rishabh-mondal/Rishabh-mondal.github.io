@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/log-sum-exp.html",
       "/posts/spiking_nn.html",
       "/posts/thuplots.html",
       "/posts/different_losses.html",
