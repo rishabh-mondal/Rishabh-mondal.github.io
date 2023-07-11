@@ -262,14 +262,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="bernoulli-distribution" class="level3">
 <h3 class="anchored" data-anchor-id="bernoulli-distribution">Bernoulli distribution</h3>
-<p>****Definition**** : Let <span class="math inline">\(X\)</span> be a random variable. Then, <span class="math inline">\(X\)</span> is said to follow a Bernoulli distribution with success probability <span class="math inline">\(p\)</span> <span class="math display">\[X \sim Bern(p)\]</span></p>
-<p>****PMF****: <span class="math display">\[
+<p><strong><em>Definition</em></strong> : Let <span class="math inline">\(X\)</span> be a random variable. Then, <span class="math inline">\(X\)</span> is said to follow a Bernoulli distribution with success probability <span class="math inline">\(p\)</span> <span class="math display">\[X \sim Bern(p)\]</span></p>
+<p><strong><em>PMF</em></strong>: <span class="math display">\[
 f(x, p) = \begin{cases}
 p &amp; \text{if } x = 1 \\
 1 - p &amp; \text{if } x = 0 \\
 \end{cases}
 \]</span></p>
-<p>****PMF of bernoulli distribution****</p>
+<p><strong><em>PMF of bernoulli distribution</em></strong></p>
 <div class="cell" data-execution_count="225">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.distributions <span class="im">import</span> Bernoulli</span>
@@ -296,8 +296,8 @@ p &amp; \text{if } x = 1 \\
 <p><img src="Sampling_distributions_files/figure-html/cell-7-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<p>****CDF****:<span class="math display">\[{\begin{cases}0&amp;{\text{if }}k&lt;0\\1-p&amp;{\text{if }}0\leq k&lt;1\\1&amp;{\text{if }}k\geq 1\end{cases}}\]</span></p>
-<p>****CDF of Bernoulli distribution****</p>
+<p><strong><em>CDF</em></strong>:<span class="math display">\[{\begin{cases}0&amp;{\text{if }}k&lt;0\\1-p&amp;{\text{if }}0\leq k&lt;1\\1&amp;{\text{if }}k\geq 1\end{cases}}\]</span></p>
+<p><strong><em>CDF of Bernoulli distribution</em></strong></p>
 <div class="cell" data-execution_count="226">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.4</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>bernoulli_dist <span class="op">=</span> dist.Bernoulli(probs<span class="op">=</span>torch.tensor(p))</span>
@@ -316,7 +316,7 @@ p &amp; \text{if } x = 1 \\
 </section>
 <section id="categorical-distribution" class="level3">
 <h3 class="anchored" data-anchor-id="categorical-distribution">Categorical distribution</h3>
-<p>****Definition**** - In a set of discrete outcomes, each outcome is assigned a probability. <span class="math display">\[X∼Cat([p_1,…,p_k])\]</span></p>
+<p><strong><em>Definition</em></strong> - In a set of discrete outcomes, each outcome is assigned a probability. <span class="math display">\[X∼Cat([p_1,…,p_k])\]</span></p>
 <p>****pmf**** : <span class="math display">\[
 f(x; p_1, p_2, ..., p_k) =
 \begin{cases}
@@ -326,7 +326,7 @@ p_2 &amp; \text{if } x = 2 \\
 p_k &amp; \text{if } x = k \\
 \end{cases}
 \]</span></p>
-<p>****PMF of Categorical distribution****</p>
+<p><strong><em>PMF of Categorical distribution</em></strong></p>
 <div class="cell" data-execution_count="227">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.distributions <span class="im">import</span> Categorical</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>probs<span class="op">=</span>torch.tensor([<span class="fl">0.20</span>,<span class="fl">0.40</span>,<span class="fl">0.40</span>])</span>
@@ -345,7 +345,7 @@ p_k &amp; \text{if } x = k \\
 <p><img src="Sampling_distributions_files/figure-html/cell-9-output-2.png" class="img-fluid"></p>
 </div>
 </div>
-<p>****CDF of Categorical distribution****</p>
+<p><strong><em>CDF of Categorical distribution</em></strong></p>
 <div class="cell" data-execution_count="228">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>probs<span class="op">=</span>torch.tensor([<span class="fl">.20</span>,<span class="fl">.40</span>,<span class="fl">.40</span>])</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>cdf <span class="op">=</span> torch.cumsum((probs),dim<span class="op">=</span><span class="dv">0</span>)</span>
@@ -368,7 +368,7 @@ p_k &amp; \text{if } x = k \\
 </section>
 <section id="univariate-continuous-distributions" class="level2">
 <h2 class="anchored" data-anchor-id="univariate-continuous-distributions">Univariate continuous distributions</h2>
-<p>****PDF**** : <span class="math display">\[f_X(x) = \frac{1}{b - a}, \quad \text{where } x \in \{a, a+1, \ldots, b-1, b\}\]</span></p>
+<p><strong><em>PDF</em></strong> : <span class="math display">\[f_X(x) = \frac{1}{b - a}, \quad \text{where } x \in \{a, a+1, \ldots, b-1, b\}\]</span></p>
 <div class="cell" data-execution_count="229">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.distributions <span class="im">import</span> Uniform</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.linspace(<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">1000</span>)</span>
@@ -382,7 +382,7 @@ p_k &amp; \text{if } x = k \\
 <p><img src="Sampling_distributions_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<p>****CDF****: <span class="math display">\[F(x) = \begin{cases}
+<p><strong><em>CDF</em></strong>: <span class="math display">\[F(x) = \begin{cases}
 0 &amp; \text{if } x &lt; a \\
 \frac{{x - a}}{{b - a}} &amp; \text{if } a \leq x &lt; b \\
 1 &amp; \text{if } x \geq b \\
@@ -401,12 +401,12 @@ p_k &amp; \text{if } x = k \\
 </div>
 <section id="normal-distribution" class="level3">
 <h3 class="anchored" data-anchor-id="normal-distribution">Normal distribution</h3>
-<p>****Definition**** : The normal distribution arises when many small factors contribute to a quantity without any extreme variations, resulting in a bell-shaped curve.</p>
-<p>****PDF**** :</p>
+<p><strong><em>Definition</em></strong> : The normal distribution arises when many small factors contribute to a quantity without any extreme variations, resulting in a bell-shaped curve.</p>
+<p><strong><em>PDF</em></strong> :</p>
 <p><span class="math display">\[
 f(x;\mu, \sigma) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
 \]</span></p>
-<p>****Support**** : (<span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>)</p>
+<p><strong><em>Support</em></strong> : (<span class="math inline">\(-\infty\)</span> to <span class="math inline">\(+\infty\)</span>)</p>
 <div class="cell" data-execution_count="231">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.distributions <span class="im">import</span> Normal</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="op">-</span><span class="dv">5</span></span>
@@ -424,7 +424,7 @@ f(x;\mu, \sigma) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}
 </div>
 </div>
 <p>****CDF**** : <span class="math display">\[F_X(x) = \frac{1}{2} \left[ 1 + \text{erf}\left(\frac{x - \mu}{\sqrt{2}\sigma}\right) \right]\]</span></p>
-<p>****CDF of Normal distribution****</p>
+<p><strong><em>CDF of Normal distribution</em></strong></p>
 <div class="cell" data-execution_count="232">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="op">-</span><span class="dv">5</span></span>
@@ -437,8 +437,8 @@ f(x;\mu, \sigma) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}
 <p><img src="Sampling_distributions_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<p>****Inverse CDF****: <span class="math display">\[Q_X(p) = \sqrt{2\sigma} \cdot \text{erf}^{-1}(2p - 1) + \mu\]</span></p>
-<p>****Inverse CDF of Normal distribution****</p>
+<p><strong><em>Inverse CDF</em></strong>: <span class="math display">\[Q_X(p) = \sqrt{2\sigma} \cdot \text{erf}^{-1}(2p - 1) + \mu\]</span></p>
+<p><strong><em>Inverse CDF of Normal distribution</em></strong></p>
 <div class="cell" data-execution_count="233">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">0.01</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="fl">0.99</span></span>
@@ -468,7 +468,7 @@ f(x;\mu, \sigma) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}
 <section id="beta-distribution" class="level3">
 <h3 class="anchored" data-anchor-id="beta-distribution">Beta distribution</h3>
 <p><strong><em>Definition</em></strong> : Let’s say you have two processes, each consisting of multiple steps. Both processes occur at the same rate, but the first process requires <span class="math inline">\(\alpha\)</span> step and the second process <span class="math inline">\(\beta\)</span> ,the fraction of the total waiting time taken by the first process is Beta distributed .</p>
-<p>****PDF****: <span class="math display">\[f(x; \alpha, \beta) = \frac{x^{\alpha-1} (1-x)^{\beta-1}}{B(\alpha, \beta)}\]</span></p>
+<p><strong><em>PDF</em></strong>: <span class="math display">\[f(x; \alpha, \beta) = \frac{x^{\alpha-1} (1-x)^{\beta-1}}{B(\alpha, \beta)}\]</span></p>
 <p>where</p>
 <p><span class="math display">\[B(\alpha, \beta) = \int_0^1 x^{\alpha-1} (1-x)^{\beta-1} dx\]</span></p>
 <p><strong><em>Support</em></strong> : [0, 1]</p>
@@ -485,8 +485,8 @@ f(x;\mu, \sigma) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}
 <p><img src="Sampling_distributions_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<p>****CDF of beta distribution**** :</p>
-<p>****CDF**** : <span class="math display">\[F_X(x) = \frac{B(x; \alpha, \beta)}{B(\alpha, \beta)}\]</span></p>
+<p><strong><em>CDF of beta distribution</em></strong> :</p>
+<p><strong><em>CDF</em></strong> : <span class="math display">\[F_X(x) = \frac{B(x; \alpha, \beta)}{B(\alpha, \beta)}\]</span></p>
 <p>where <span class="math inline">\({B(a, b)}\)</span> is the beta function and <span class="math inline">\(B(x; \alpha, \beta)\)</span> is the incomplete gamma function.</p>
 <div class="cell" data-execution_count="236">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
