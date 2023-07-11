@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Rishab Mondal">
+<meta name="dcterms.date" content="2022-10-24">
+<meta name="description" content="desp">
 
-<title>log-sum-exp</title>
+<title>The log-sum-exp trick</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -151,13 +154,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The log-sum-exp trick</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">trick</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    desp
+  </div>
+</div>
 
 
-<div class="cell" data-execution_count="25">
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p><a href="https://rishabh-mondal.github.io/">Rishab Mondal</a> </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 24, 2022</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="the-log-sum-exp-trick" class="level3">
+<h3 class="anchored" data-anchor-id="the-log-sum-exp-trick">The log-sum-exp trick</h3>
+<p><strong><em>The log-sum-exp trick improves stability in exponentiation and logarithmic calculations by operating in the logarithmic domain, avoiding numerical overflow or underflow.</em></strong></p>
+<div class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong><em>The <code>log1p</code> function is a useful tool for calculating the logarithm of 1 + p, particularly when p is a small value. It helps avoid numerical instability issues that can arise when directly computing <code>np.log(1 + p)</code> when p is close to zero. By using <code>log1p</code>, you can achieve a more accurate and stable calculation of the logarithm.</em></strong></p>
-<div class="cell" data-execution_count="26">
+<div class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">1e-10</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> np.log(<span class="dv">1</span> <span class="op">+</span> p)  <span class="co"># Direct computation, can be unstable for small p</span></span>
@@ -170,7 +211,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><strong><em>When dealing with small values like 1e-5, using the expression <code>exp(p) - 1</code> can result in a loss of precision. In such cases, the function <code>expm1(p)</code> is a better alternative as it provides a more accurate result that preserves the precision of the small input value p.</em></strong></p>
-<div class="cell" data-execution_count="27">
+<div class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>result1 <span class="op">=</span> np.exp(p) <span class="op">-</span> <span class="dv">1</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>result2 <span class="op">=</span> np.expm1(p)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -187,7 +228,7 @@ Using expm1(p):
 </div>
 </div>
 <p><strong><em>Using np.log1p to compute log(1 + p) provides a numerically stable and accurate result of 1e-10, even for small values of p.</em></strong></p>
-<div class="cell" data-execution_count="28">
+<div class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -199,7 +240,7 @@ Using expm1(p):
 </div>
 </div>
 <p><strong><em>To avoid numerical instability when computing x log(1 + p) with small values of x and p, it is advisable to use np.log1p instead of directly calculating np.log(1 + p). This ensures better accuracy and stability by preserving the precision of the small input p.</em></strong></p>
-<div class="cell" data-execution_count="29">
+<div class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.special <span class="im">import</span> xlog1py</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.special <span class="im">import</span> xlogy</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -219,6 +260,7 @@ Using expm1(p):
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
