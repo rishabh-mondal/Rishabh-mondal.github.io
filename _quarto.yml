@@ -1,24 +1,57 @@
+# quarto.toml
+
 project:
   type: website
   output-dir: docs
 
 website:
-  #title: "Rishabh Mondal"
   navbar:
-   background: primary
-   left:
-     - href: index.qmd
-     - href: about.qmd
-     - href: Conference.qmd 
-     - href: workshop.qmd
-     - href: blog.qmd
-     - href: gallery.qmd
+    background: "#001F3F"
+    left:
+      - href: index.qmd
+      - href: about.qmd
+      - href: Conference.qmd
+      - href: workshop.qmd
+      - href: blog.qmd
+      - href: gallery.qmd
 
 format:
   html:
-    theme: 
+    theme:
       light: minty
       dark: slate
     css: styles.css
-editor: visual
+    # Add the following CSS code to include the background image and additional styling
+    additional-css: |
+      body {
+        background-image: url('_f83eee25-c663-4913-97db-1f70f2d3f3ee.jpeg');  # Replace with the actual path to your flower image
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        font-family: 'Arial', sans-serif;
+        color: #333; /* Text color */
+      }
 
+      /* Style the navbar */
+      nav.navbar {
+        border-bottom: 2px solid #fff; /* White border at the bottom of the navbar */
+        padding: 1rem;
+      }
+
+      nav.navbar a {
+        color: #fff; /* Navbar link color */
+        margin-right: 1rem;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      /* Style the content area */
+      main.container {
+        padding: 2rem;
+        background-color: #fff; /* White background for the content area */
+        border-radius: 10px; /* Rounded corners for the content area */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Drop shadow for the content area */
+      }
+
+editor: visual

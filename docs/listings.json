@@ -3,14 +3,16 @@
     "listing": "/blog.html",
     "items": [
       "/posts/spiking_nn.html",
-      "/posts/basic_matplotlib.html",
+      "/posts/ssl.html",
       "/posts/thuplots.html",
+      "/posts/basic_matplotlib.html",
       "/posts/different_losses.html",
+      "/posts/self_supervised_learing.html",
       "/posts/Probablity_distibution.html",
       "/posts/Sampling_distributions.html",
       "/posts/MLLosses.html",
-      "/posts/log-sum-exp.html",
-      "/posts/index.html"
+      "/posts/index.html",
+      "/posts/log-sum-exp.html"
     ]
   }
 ]

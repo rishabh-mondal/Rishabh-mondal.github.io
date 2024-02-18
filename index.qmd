@@ -1,46 +1,55 @@
 ---
-title: Rishabh Mondal
-image: ris.jpg
+# title: Rishabh Mondal
+image: Rishabh.jpg
 about:
   template: trestles
   image-width: 18em
   image-shape: rectangle
   links:
-    - icon: LinkedIn
+    - icon: fab fa-linkedin-in
       text: LinkedIn
       href: https://linkedin.com/in/rishabh84
     - icon: github
       text: Github
-      href: https://github.com/Risshabh-ML
-    - icon: Email
-      text: Email
+      href: https://github.com/rishabh-mondal
+    - icon: Gmail
+      text: Gmail
       href: iamr38579@gmail.com
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/RishabhMon92409
+    - icon: google-scholar
+      text: Google Scholar
+      href: https://scholar.google.com/citations?user=oGYVSX0AAAAJ&hl=en&oi=ao
 ---
 
 
 :::{#hero-heading}
-
-Hi! I am Rishabh Mondal.As an enthusiastic learner, I am always eager to take up challenging tasks and push my limits to achieve excellence. My academic journey has give me a strong foundation in the concepts of computer science, and I have gained practical experience through various projects
-
-## Education
-M.Tech in Information Technology       
-Indian Institute of Engineering Science and Technology, Shibpur | Sept 2021 - June 2023
-
-B.Tech in Computer Science and Engineering       
-The Neotia University, Kolkata |Sept 2017 - June 2021
-
-## Project
-
-1. An LSTM-based Fall Detection System with ROC optimization technique: A step towards more accuracy                   
-
-2. Brain Tumor Detection using Convolution Neural Network.
-
-3. Indian currency detection through KNN and audio transfer for blind people.
-
-## Awards
-
-Winner of IBM ICE DAY (poster competition)|2019
-
+# **Rishabh Mondal**
+Hello, I'm Rishabh, a dedicated Ph.D. student in Computer Science and Engineering at the [**Sustainability Lab**](https://nipunbatra.github.io/lab/), IIT Gandhinagar, under the guidance of [**Prof. Nipun Batra**](https://nipunbatra.github.io). My research revolves around the captivating realms of Computer Vision, with a specific focus on its application in monitoring and analyzing air pollution using satellite imagery. Passionate about leveraging technology for environmental sustainability, I am committed to making meaningful contributions to the field.
 :::
 
-### 
+---
+### Education
+- **Ph.D. in Computer Science and Engineering**
+
+  [Indian Institute of Technology (IIT) Gandhinagar](https://www.iitgn.ac.in/)  |  *June 2023 - Present*
+
+- **M.Tech in Information Technology**
+
+  [Indian Institute of Engineering Science and Technology (IIEST), Shibpur](https://www.iiests.ac.in/)  |  *Sept 2021 - June 2023*
+
+- **B.Tech in Computer Science and Engineering**
+
+  [The Neotia University, Kolkata](https://www.tnu.in/) | *Sept 2017 - June 2021*
+
+### Updates
+- **27 Oct:** A workshop paper titled "**Towards Scalable Identification of Brick Kilns from Satellite Imagery with Active Learning**" got accepted in [NeurIPS 2023 Workshop on Adaptive Experimental Design and Active Learning in the Real World](https://realworldml.github.io/neurips2023/).  
+
+- **1st July:** A conference paper titled "**Recall-Driven Precision Refinement: Unveiling Accurate Fall Detection Using LSTM**" got accepted in the 2023 [6TH IFIP INTERNATIONAL INTERNET OF THINGS (IoT) CONFERENCE, TEXAS, USA](https://link.springer.com/chapter/10.1007/978-3-031-45882-8_6) .
+
+
+## Research Interests
+- **Machine Learning**
+- **Computer Vision**
+- **Self-Supervised Learning**
