@@ -1,6 +1,6 @@
 ---
 # title: Rishabh Mondal
-image: Rishabh.jpg
+image: ris.jpg
 about:
   template: trestles
   image-width: 18em
@@ -10,7 +10,7 @@ about:
       text: LinkedIn
       href: https://linkedin.com/in/rishabh84
     - icon: github
-      text: Github
+      text: GitHub
       href: https://github.com/rishabh-mondal
     - icon: Gmail
       text: Gmail
@@ -21,28 +21,26 @@ about:
     - icon: google-scholar
       text: Google Scholar
       href: https://scholar.google.com/citations?user=oGYVSX0AAAAJ&hl=en&oi=ao
----
 
+---
 
 :::{#hero-heading}
 # **Rishabh Mondal**
 Hello, I'm Rishabh, a dedicated Ph.D. student in Computer Science and Engineering at the [**Sustainability Lab**](https://nipunbatra.github.io/lab/), IIT Gandhinagar, under the guidance of [**Prof. Nipun Batra**](https://nipunbatra.github.io). My research revolves around the captivating realms of Computer Vision, with a specific focus on its application in monitoring and analyzing air pollution using satellite imagery. Passionate about leveraging technology for environmental sustainability, I am committed to making meaningful contributions to the field.
 :::
-
 ---
+
 ### Education
 - **Ph.D. in Computer Science and Engineering**
-
   [Indian Institute of Technology (IIT) Gandhinagar](https://www.iitgn.ac.in/)  |  *June 2023 - Present*
 
 - **M.Tech in Information Technology**
-
   [Indian Institute of Engineering Science and Technology (IIEST), Shibpur](https://www.iiests.ac.in/)  |  *Sept 2021 - June 2023*
 
 - **B.Tech in Computer Science and Engineering**
-
   [The Neotia University, Kolkata](https://www.tnu.in/) | *Sept 2017 - June 2021*
 
+---
 ### Updates
 - **27 Oct:** A workshop paper titled "**Towards Scalable Identification of Brick Kilns from Satellite Imagery with Active Learning**" got accepted in [NeurIPS 2023 Workshop on Adaptive Experimental Design and Active Learning in the Real World](https://realworldml.github.io/neurips2023/).  
 
@@ -50,6 +48,6 @@ Hello, I'm Rishabh, a dedicated Ph.D. student in Computer Science and Engineerin
 
 
 ## Research Interests
-- **Machine Learning**
-- **Computer Vision**
-- **Self-Supervised Learning**
+- Machine Learning
+- Computer Vision
+- Self-Supervised Learning
