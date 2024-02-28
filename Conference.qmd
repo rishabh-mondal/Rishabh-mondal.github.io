@@ -2,4 +2,6 @@
 title: "Publications"
 ---
 
-Workshop on Cloud Computing organized by IIT Kharagpur,2019
+- A workshop paper titled "**Towards Scalable Identification of Brick Kilns from Satellite Imagery with Active Learning**" got accepted in [NeurIPS 2023 Workshop on Adaptive Experimental Design and Active Learning in the Real World](https://realworldml.github.io/neurips2023/).  
+
+- A conference paper titled "**Recall-Driven Precision Refinement: Unveiling Accurate Fall Detection Using LSTM**" got accepted in the 2023 [6TH IFIP INTERNATIONAL INTERNET OF THINGS (IoT) CONFERENCE, TEXAS, USA](https://link.springer.com/chapter/10.1007/978-3-031-45882-8_6) .
