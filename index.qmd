@@ -26,7 +26,7 @@ about:
 
 :::{#hero-heading}
 # **Rishabh Mondal**
-Hello, I'm Rishabh, a dedicated JRF student in Computer Science and Engineering at the [**Sustainability Lab**](https://nipunbatra.github.io/lab/), IIT Gandhinagar, under the guidance of [**Prof. Nipun Batra**](https://nipunbatra.github.io). My research revolves around the captivating realms of Computer Vision, with a specific focus on its application in monitoring and analyzing air pollution using satellite imagery. Passionate about leveraging technology for environmental sustainability, I am committed to making meaningful contributions to the field.
+Hello, I'm Rishabh, a dedicated Ph.D student in Computer Science and Engineering at the [**Sustainability Lab**](https://nipunbatra.github.io/lab/), IIT Gandhinagar, under the guidance of [**Prof. Nipun Batra**](https://nipunbatra.github.io). My research revolves around the captivating realms of Computer Vision, with a specific focus on its application in monitoring and analyzing air pollution using satellite imagery. Passionate about leveraging technology for environmental sustainability, I am committed to making meaningful contributions to the field.
 :::
 ---
 
@@ -44,12 +44,12 @@ Hello, I'm Rishabh, a dedicated JRF student in Computer Science and Engineering 
 ### Updates
 
 
-- **1st Mar:** A paper titled **Scalable Methods for Brick Kiln Detection and Compliance Monitoring from Satellite Imagery: A Deployment Case Study in India** is in review in A* conference - <font color="red"><a href="https://arxiv.org/pdf/2402.13796" style="color:red;">[Arxiv version]</a></font>. 
+- **1st Mar,2024:** A paper titled **Scalable Methods for Brick Kiln Detection and Compliance Monitoring from Satellite Imagery: A Deployment Case Study in India** is in review in A* conference - <font color="red"><a href="https://arxiv.org/pdf/2402.13796" style="color:red;">[Arxiv version]</a></font>. 
 
 
-- **27 Oct:** A workshop paper titled **Towards Scalable Identification of Brick Kilns from Satellite Imagery with Active Learning** got accepted in [NeurIPS 2023 Workshop](https://realworldml.github.io/neurips2023/).  
+- **27 Oct,2023:** A workshop paper titled **Towards Scalable Identification of Brick Kilns from Satellite Imagery with Active Learning** got accepted in [NeurIPS 2023 Workshop](https://realworldml.github.io/neurips2023/).  
 
-- **1st July:** A conference paper titled **Recall-Driven Precision Refinement: Unveiling Accurate Fall Detection Using LSTM** got accepted in the 2023 [6TH IFIP IoT CONFERENCE, TEXAS, USA](https://link.springer.com/chapter/10.1007/978-3-031-45882-8_6) .
+- **1st July,2023:** A conference paper titled **Recall-Driven Precision Refinement: Unveiling Accurate Fall Detection Using LSTM** got accepted in the 2023 [6TH IFIP IoT CONFERENCE, TEXAS, USA](https://link.springer.com/chapter/10.1007/978-3-031-45882-8_6) .
 
 
 ## Research Interests
