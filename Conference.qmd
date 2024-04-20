@@ -2,6 +2,15 @@
 title: "Publications"
 ---
 
-- A workshop paper titled "**Towards Scalable Identification of Brick Kilns from Satellite Imagery with Active Learning**" got accepted in [NeurIPS 2023 Workshop on Adaptive Experimental Design and Active Learning in the Real World](https://realworldml.github.io/neurips2023/).  
+**<font color="blue">Scalable Methods for Brick Kiln Detection and Compliance Monitoring from Satellite Imagery: A Deployment Case Study in India</font>** - <font color="red"><a href="https://arxiv.org/pdf/2402.13796" style="color:red;">Arxiv</a></font>.
 
-- A conference paper titled "**Recall-Driven Precision Refinement: Unveiling Accurate Fall Detection Using LSTM**" got accepted in the 2023 [6TH IFIP INTERNATIONAL INTERNET OF THINGS (IoT) CONFERENCE, TEXAS, USA](https://link.springer.com/chapter/10.1007/978-3-031-45882-8_6) .
+**[<font color="green">[code]</font>](https://github.com/rishabh-mondal/kdd24_brick_kilns)**
+**[<font color="red">  [App] </font>](https://brick-kilns-detector.streamlit.app/)**
+
+**<font color="blue">Towards Scalable Identification of Brick Kilns from Satellite Imagery with Active Learning</font>** - [NeurIPS 2023 Workshop](https://realworldml.github.io/neurips2023/).
+
+**[<font color="green">[code]</font>](https://github.com/rishabh-mondal/NurIPS_BK_Paper)**
+
+**<font color="blue">Recall-Driven Precision Refinement: Unveiling Accurate Fall Detection Using LSTM</font>** - [6TH IFIP IOT CONFERENCE, TEXAS, USA](https://link.springer.com/chapter/10.1007/978-3-031-45882-8_6).
+
+

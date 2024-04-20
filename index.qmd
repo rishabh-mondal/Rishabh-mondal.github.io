@@ -42,9 +42,14 @@ Hello, I'm Rishabh, a dedicated JRF student in Computer Science and Engineering 
 
 ---
 ### Updates
-- **27 Oct:** A workshop paper titled "**Towards Scalable Identification of Brick Kilns from Satellite Imagery with Active Learning**" got accepted in [NeurIPS 2023 Workshop on Adaptive Experimental Design and Active Learning in the Real World](https://realworldml.github.io/neurips2023/).  
 
-- **1st July:** A conference paper titled "**Recall-Driven Precision Refinement: Unveiling Accurate Fall Detection Using LSTM**" got accepted in the 2023 [6TH IFIP INTERNATIONAL INTERNET OF THINGS (IoT) CONFERENCE, TEXAS, USA](https://link.springer.com/chapter/10.1007/978-3-031-45882-8_6) .
+
+- **1st Mar:** A paper titled **Scalable Methods for Brick Kiln Detection and Compliance Monitoring from Satellite Imagery: A Deployment Case Study in India** is in review in A* conference - <font color="red"><a href="https://arxiv.org/pdf/2402.13796" style="color:red;">[Arxiv version]</a></font>. 
+
+
+- **27 Oct:** A workshop paper titled **Towards Scalable Identification of Brick Kilns from Satellite Imagery with Active Learning** got accepted in [NeurIPS 2023 Workshop](https://realworldml.github.io/neurips2023/).  
+
+- **1st July:** A conference paper titled **Recall-Driven Precision Refinement: Unveiling Accurate Fall Detection Using LSTM** got accepted in the 2023 [6TH IFIP IoT CONFERENCE, TEXAS, USA](https://link.springer.com/chapter/10.1007/978-3-031-45882-8_6) .
 
 
 ## Research Interests
