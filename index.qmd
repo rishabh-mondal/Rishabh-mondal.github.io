@@ -26,7 +26,7 @@ about:
 
 :::{#hero-heading}
 # **Rishabh Mondal**
-Hello, I'm Rishabh, a dedicated Ph.D student in Computer Science and Engineering at the [**Sustainability Lab**](https://nipunbatra.github.io/lab/), IIT Gandhinagar, under the guidance of [**Prof. Nipun Batra**](https://nipunbatra.github.io). My research revolves around the captivating realms of Computer Vision, with a specific focus on its application in monitoring and analyzing air pollution using satellite imagery. Passionate about leveraging technology for environmental sustainability, I am committed to making meaningful contributions to the field.
+Hello, I'm Rishabh, a dedicated JRF student in Computer Science and Engineering at the [**Sustainability Lab**](https://nipunbatra.github.io/lab/), IIT Gandhinagar, under the guidance of [**Prof. Nipun Batra**](https://nipunbatra.github.io). My research revolves around the captivating realms of Computer Vision, with a specific focus on its application in monitoring and analyzing air pollution source detection using satellite imagery. Passionate about leveraging technology for environmental sustainability, I am committed to making meaningful contributions to the field.
 :::
 ---
 
