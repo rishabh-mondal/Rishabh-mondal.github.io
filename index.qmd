@@ -31,7 +31,7 @@ Hello, I'm Rishabh, a dedicated Ph.D student in Computer Science and Engineering
 ---
 
 ### Education
-- **Ph.D in Computer Science and Engineering**
+- **JRF in Computer Science and Engineering**
   [Indian Institute of Technology (IIT) Gandhinagar](https://www.iitgn.ac.in/)  |  *June 2023 - Present*
 
 - **M.Tech in Information Technology**
@@ -42,6 +42,8 @@ Hello, I'm Rishabh, a dedicated Ph.D student in Computer Science and Engineering
 
 ---
 ### Updates
+
+- **11 July,2024:** A poster titled **Eye in the Sky: Detection and Compliance Monitoring of Brick Kilns using Satellite Imagery** is presented in [ACM COMPASS 2024](https://compass.acm.org/accepted-posters/).
 
 
 - **1st Mar,2024:** A paper titled **Scalable Methods for Brick Kiln Detection and Compliance Monitoring from Satellite Imagery: A Deployment Case Study in India** is in review in A* conference - <font color="red"><a href="https://arxiv.org/pdf/2402.13796" style="color:red;">[Arxiv version]</a></font>. 
