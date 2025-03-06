@@ -2,8 +2,8 @@
 title: "Certification"
 ---
 
-1. Deep Learning from GUVI Geek Network & IITM - 2021.
+1.  Deep Learning from GUVI Geek Network & IITM - 2021.
 
-2. Six weeks of Summer Training on ML from IIT Kanpur,2019.
+2.  Six weeks of Summer Training on ML from IIT Kanpur,2019.
 
-3. Online Python Training from IIT Kanpur,2019.
+3.  Online Python Training from IIT Kanpur,2019.

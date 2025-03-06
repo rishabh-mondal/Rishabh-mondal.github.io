@@ -14,24 +14,24 @@ about:
       href: https://github.com/rishabh-mondal
     - icon: Gmail
       text: Gmail
-      href: iamr38579@gmail.com
+      href: rishabh.mondal@iitgn.ac.in
     - icon: twitter
       text: Twitter
       href: https://twitter.com/RishabhMon92409
     - icon: google-scholar
       text: Google Scholar
       href: https://scholar.google.com/citations?user=oGYVSX0AAAAJ&hl=en&oi=ao
-
+     
 ---
 
 :::{#hero-heading}
 # **Rishabh Mondal**
-Hello, I'm Rishabh, a dedicated JRF student in Computer Science and Engineering at the [**Sustainability Lab**](https://nipunbatra.github.io/lab/), IIT Gandhinagar, under the guidance of [**Prof. Nipun Batra**](https://nipunbatra.github.io). My research revolves around the captivating realms of Computer Vision, with a specific focus on its application in monitoring and analyzing air pollution source detection using satellite imagery. Passionate about leveraging technology for environmental sustainability, I am committed to making meaningful contributions to the field.
+Hello, I'm Rishabh, a dedicated Ph.D student in Computer Science and Engineering at the [**Sustainability Lab**](https://nipunbatra.github.io/lab/), IIT Gandhinagar, under the guidance of [**Prof. Nipun Batra**](https://nipunbatra.github.io). My research revolves around the captivating realms of Computer Vision, with a specific focus on its application in monitoring and analyzing air pollution source detection using satellite imagery. Passionate about leveraging technology for environmental sustainability.
 :::
 ---
 
 ### Education
-- **JRF in Computer Science and Engineering**
+- **Ph.D in Computer Science and Engineering**
   [Indian Institute of Technology (IIT) Gandhinagar](https://www.iitgn.ac.in/)  |  *June 2023 - Present*
 
 - **M.Tech in Information Technology**
@@ -40,7 +40,7 @@ Hello, I'm Rishabh, a dedicated JRF student in Computer Science and Engineering 
 - **B.Tech in Computer Science and Engineering**
   [The Neotia University, Kolkata](https://www.tnu.in/) | *Sept 2017 - June 2021*
 
----
+<!-- ---
 ### Updates
 
 - **11 July,2024:** A poster titled **Eye in the Sky: Detection and Compliance Monitoring of Brick Kilns using Satellite Imagery** is presented in [ACM COMPASS 2024](https://compass.acm.org/accepted-posters/).
@@ -52,6 +52,69 @@ Hello, I'm Rishabh, a dedicated JRF student in Computer Science and Engineering 
 - **27 Oct,2023:** A workshop paper titled **Towards Scalable Identification of Brick Kilns from Satellite Imagery with Active Learning** got accepted in [NeurIPS 2023 Workshop](https://realworldml.github.io/neurips2023/).  
 
 - **1st July,2023:** A conference paper titled **Recall-Driven Precision Refinement: Unveiling Accurate Fall Detection Using LSTM** got accepted in the 2023 [6TH IFIP IoT CONFERENCE, TEXAS, USA](https://link.springer.com/chapter/10.1007/978-3-031-45882-8_6) .
+ -->
+
+### Updates
+
+<div id="updates-container">
+  <ul id="updates-list">
+    <li><b>11 July,2024:</b> A poster titled <b>Eye in the Sky: Detection and Compliance Monitoring of Brick Kilns using Satellite Imagery</b> is presented in <a href="https://compass.acm.org/accepted-posters/">ACM COMPASS 2024</a>.</li>
+    
+    <li><b>1st Mar,2024:</b> A paper titled <b>Scalable Methods for Brick Kiln Detection and Compliance Monitoring from Satellite Imagery</b> is in review in A* conference - <a href="https://arxiv.org/pdf/2402.13796" style="color:red;">[Arxiv version]</a>.</li>
+    
+    <li><b>27 Oct,2023:</b> A workshop paper titled <b>Towards Scalable Identification of Brick Kilns from Satellite Imagery with Active Learning</b> got accepted in <a href="https://realworldml.github.io/neurips2023/">NeurIPS 2023 Workshop</a>.</li>
+    
+    <li><b>1st July,2023:</b> A conference paper titled <b>Recall-Driven Precision Refinement: Unveiling Accurate Fall Detection Using LSTM</b> got accepted in the <a href="https://link.springer.com/chapter/10.1007/978-3-031-45882-8_6">6TH IFIP IoT CONFERENCE, TEXAS, USA</a>.</li>
+  </ul>
+</div>
+
+<style>
+  #updates-container {
+    width: 100%;
+    height: 150px;  /* Adjust the height */
+    overflow: hidden;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+    background-color: #f9f9f9;
+  }
+
+  #updates-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    animation: scroll-up 20s linear infinite; /* Smooth scrolling animation */
+  }
+
+  @keyframes scroll-up {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100%); } /* Moves content up */
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const list = document.getElementById("updates-list");
+    const container = document.getElementById("updates-container");
+
+    // Duplicate the list for seamless scrolling
+    const clone = list.cloneNode(true);
+    container.appendChild(clone);
+
+    // Ensure smooth infinite scrolling
+    let speed = 20; // Adjust scroll speed
+    function scrollUpdates() {
+      list.style.transform = `translateY(${list.offsetTop - 1}px)`;
+      if (-list.offsetTop >= list.scrollHeight) {
+        list.style.transform = `translateY(0px)`;
+      }
+      requestAnimationFrame(scrollUpdates);
+    }
+    scrollUpdates();
+  });
+</script>
 
 
 ## Research Interests

@@ -228,7 +228,7 @@
     "href": "index.html",
     "title": "Rishabh Mondal",
     "section": "",
-    "text": "Hello, I’m Rishabh, a dedicated JRF student in Computer Science and Engineering at the Sustainability Lab, IIT Gandhinagar, under the guidance of Prof. Nipun Batra. My research revolves around the captivating realms of Computer Vision, with a specific focus on its application in monitoring and analyzing air pollution source detection using satellite imagery. Passionate about leveraging technology for environmental sustainability, I am committed to making meaningful contributions to the field."
+    "text": "Hello, I’m Rishabh, a dedicated Ph.D student in Computer Science and Engineering at the Sustainability Lab, IIT Gandhinagar, under the guidance of Prof. Nipun Batra. My research revolves around the captivating realms of Computer Vision, with a specific focus on its application in monitoring and analyzing air pollution source detection using satellite imagery. Passionate about leveraging technology for environmental sustainability."
   },
   {
     "objectID": "index.html#research-interests",
@@ -236,5 +236,47 @@
     "title": "Rishabh Mondal",
     "section": "Research Interests",
     "text": "Research Interests\n\nMachine Learning\nComputer Vision\nSelf-Supervised Learning"
+  },
+  {
+    "objectID": "index.html#recent-highlights",
+    "href": "index.html#recent-highlights",
+    "title": "Rishabh Mondal",
+    "section": "Recent Highlights",
+    "text": "Recent Highlights\n11 July, 2024\nPoster presented at ACM COMPASS 2024:\nEye in the Sky: Detection and Compliance Monitoring of Brick Kilns using Satellite Imagery\n1st March, 2024\nPaper in review at A* Conference:\nScalable Methods for Brick Kiln Detection and Compliance Monitoring from Satellite Imagery\nRead on ArXiv\n27 October, 2023\nWorkshop paper accepted at NeurIPS 2023 Workshop:\nTowards Scalable Identification of Brick Kilns from Satellite Imagery with Active Learning\n1st July, 2023\nConference paper accepted at IFIP IoT 2023, USA:\nRecall-Driven Precision Refinement: Unveiling Accurate Fall Detection Using LSTM\nSpringer Link"
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Rishabh Mondal",
+    "section": "Education",
+    "text": "Education\n\nPh.D. in Computer Science & Engineering (2023 - Present)\nIndian Institute of Technology (IIT) Gandhinagar\nM.Tech in Information Technology (2021 - 2023)\nIIEST, Shibpur\nB.Tech in Computer Science & Engineering (2017 - 2021)\nThe Neotia University, Kolkata"
+  },
+  {
+    "objectID": "index.html#connect-with-me",
+    "href": "index.html#connect-with-me",
+    "title": "Rishabh Mondal",
+    "section": "Connect With Me",
+    "text": "Connect With Me\nEmail: rishabh.mondal@iitgn.ac.in\nLinkedIn: linkedin.com/in/rishabh84\nTwitter: twitter.com/RishabhMon92409\nGoogle Scholar: Scholar Profile"
+  },
+  {
+    "objectID": "index.html#custom-css-styles.css",
+    "href": "index.html#custom-css-styles.css",
+    "title": "Rishabh Mondal",
+    "section": "🎨 Custom CSS (styles.css)",
+    "text": "🎨 Custom CSS (styles.css)\nTo enhance the layout, make the bio align under the photo, and enable smooth scrolling logs, add this CSS file:\n```css .container { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }\n.left-panel { width: 30%; text-align: left; }\n.right-panel { width: 65%; }\n.scrolling-logs { height: 150px; overflow-y: auto; padding: 10px; border: 1px solid #ddd; background: #f9f9f9; border-radius: 8px; }\nh1, h2 { color: #2c3e50; }\na { color: #007bff; text-decoration: none; }\na:hover { text-decoration: underline; }"
+  },
+  {
+    "objectID": "index.html#main-sections-layout",
+    "href": "index.html#main-sections-layout",
+    "title": "Rishabh Mondal",
+    "section": "Main Sections Layout",
+    "text": "Main Sections Layout\n\n\n\n&lt;h2&gt;Education&lt;/h2&gt;\n&lt;ul&gt;\n  &lt;li&gt;&lt;strong&gt;Ph.D in Computer Science and Engineering&lt;/strong&gt;&lt;br&gt;\n      &lt;a href=\"https://www.iitgn.ac.in/\"&gt;Indian Institute of Technology (IIT) Gandhinagar&lt;/a&gt; | &lt;em&gt;June 2023 - Present&lt;/em&gt;\n  &lt;/li&gt;\n  &lt;li&gt;&lt;strong&gt;M.Tech in Information Technology&lt;/strong&gt;&lt;br&gt;\n      &lt;a href=\"https://www.iiests.ac.in/\"&gt;IIEST, Shibpur&lt;/a&gt; | &lt;em&gt;Sept 2021 - June 2023&lt;/em&gt;\n  &lt;/li&gt;\n  &lt;li&gt;&lt;strong&gt;B.Tech in Computer Science and Engineering&lt;/strong&gt;&lt;br&gt;\n      &lt;a href=\"https://www.tnu.in/\"&gt;The Neotia University, Kolkata&lt;/a&gt; | &lt;em&gt;Sept 2017 - June 2021&lt;/em&gt;\n  &lt;/li&gt;\n&lt;/ul&gt;\n\n\n\n&lt;h2&gt;Updates&lt;/h2&gt;\n&lt;div id=\"updates-container\"&gt;\n  &lt;ul id=\"updates-list\"&gt;\n    &lt;li&gt;&lt;strong&gt;11 July,2024:&lt;/strong&gt; A poster titled &lt;strong&gt;Eye in the Sky: Detection and Compliance Monitoring of Brick Kilns using Satellite Imagery&lt;/strong&gt; is presented in &lt;a href=\"https://compass.acm.org/accepted-posters/\"&gt;ACM COMPASS 2024&lt;/a&gt;.&lt;/li&gt;\n    &lt;li&gt;&lt;strong&gt;1st Mar,2024:&lt;/strong&gt; A paper titled &lt;strong&gt;Scalable Methods for Brick Kiln Detection and Compliance Monitoring from Satellite Imagery&lt;/strong&gt; is in review in A* conference - &lt;a href=\"https://arxiv.org/pdf/2402.13796\" style=\"color:red;\"&gt;[Arxiv version]&lt;/a&gt;.&lt;/li&gt;\n    &lt;li&gt;&lt;strong&gt;27 Oct,2023:&lt;/strong&gt; A workshop paper titled &lt;strong&gt;Towards Scalable Identification of Brick Kilns from Satellite Imagery with Active Learning&lt;/strong&gt; got accepted in &lt;a href=\"https://realworldml.github.io/neurips2023/\"&gt;NeurIPS 2023 Workshop&lt;/a&gt;.&lt;/li&gt;\n    &lt;li&gt;&lt;strong&gt;1st July,2023:&lt;/strong&gt; A conference paper titled &lt;strong&gt;Recall-Driven Precision Refinement: Unveiling Accurate Fall Detection Using LSTM&lt;/strong&gt; got accepted in the &lt;a href=\"https://link.springer.com/chapter/10.1007/978-3-031-45882-8_6\"&gt;6TH IFIP IoT CONFERENCE, TEXAS, USA&lt;/a&gt;.&lt;/li&gt;\n  &lt;/ul&gt;\n&lt;/div&gt;"
+  },
+  {
+    "objectID": "index.html#styling-and-scrolling-script",
+    "href": "index.html#styling-and-scrolling-script",
+    "title": "Rishabh Mondal",
+    "section": "Styling and Scrolling Script",
+    "text": "Styling and Scrolling Script"
   }
 ]
